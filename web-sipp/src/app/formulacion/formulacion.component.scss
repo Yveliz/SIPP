@@ -1,0 +1,199 @@
+/* Ejemplo de estilos para el componente FormulacionComponent */
+
+/* Estilo para el título */
+h1 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  /* Estilo para las etiquetas de los select */
+  label {
+    font-weight: bold;
+    color: #666;
+  }
+  
+  /* Estilo para los select */
+  select {
+    width: 200px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Estilo para los botones */
+  button {
+    padding: 8px 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Otros estilos personalizados según tus necesidades */
+  
+  table {
+    width: 100%;
+  }
+  
+  table th, table td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  table th {
+    background-color: #f1f1f1;
+  }
+  
+  table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  table tbody tr:hover {
+    background-color: #eaeaea;
+  }
+
+  .col {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+
+// Definimos las variables de colores.
+$color-table-1: #5086c1;
+$color-table-2: #6a9eda;
+$color-table-3: #84b6f4;
+$color-table-4: #b2dafa;
+
+@mixin tableStyle($color) {
+  .e-headercell,
+  .e-detailheadercell
+  // .e-detailrowcollapse
+  // .e-detailrowexpand
+  // .e-detailindentcell 
+  {
+    background-color: $color;
+    color: #fff;
+  }
+}
+
+.e-grid {
+  &.table-1 {
+    @include tableStyle($color-table-1);
+  }
+
+  &.table-2 {
+    @include tableStyle($color-table-2);
+  }
+
+  &.table-3 {
+    @include tableStyle($color-table-3);
+  }
+
+  &.table-4 {
+    @include tableStyle($color-table-4);
+  }
+}
+
+/* Estilo personalizado para las celdas de la tabla */
+.e-grid .e-rowcell {
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/* Estilo para ajustar la altura de las filas */
+.e-grid .e-row.e-gridrowindex,
+.e-grid .e-row.e-gridrowindex .e-rowcell {
+  height: auto !important;
+}
+
+/* Estilo personalizado para las celdas y encabezados de la tabla */
+
+.e-grid .e-headercell,
+.e-grid .e-gridheader,
+.e-grid .e-headercontent,
+.e-grid .e-columnheader,
+.e-grid .e-table {
+  height: auto !important;
+  white-space: normal !important;
+}
+
+.e-grid .e-headercell .e-headertext {
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+::ng-deep .e-grid .e-headercelldiv {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow: visible !important;
+  height: auto !important;
+}
+.card {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.select-max-width {
+  max-width: 200px;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+th {
+  background-color: #f1f1f1;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #eaeaea;
+}
+
+.e-grid .e-detailrow .e-detailcell {
+  padding: 0 !important;
+  border: 0 !important;
+  margin: 0 !important;
+}
+
+.e-grid .e-rowcell,
+.e-grid .e-headercell {
+  border: 0.0px solid #979797e7;
+  border-radius: 0px;
+}
+
+.e-grid .e-content {
+  height: auto !important;
+}

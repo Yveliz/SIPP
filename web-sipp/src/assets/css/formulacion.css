@@ -1,0 +1,35 @@
+
+header div img {
+    border-left-width: 10px;
+    border-right-width: 10px;
+    border-top-width: 10px;
+    border-bottom-width: 10px;
+    height: 50px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    width: 110px;
+	float: left;
+}
+h1.display-4 {
+
+  font-size: 36px;
+}
+h5.card-header.font-weight-light {
+  font-size: 18px;
+}
+
+nav.navbar.navbar-expand-md.navbar-dark.bg-primary {
+    background-color: #3c8dbc!important;
+}
+
+
+.form-control {
+    max-width: 300px;  
+  
+  }
+
+  .form-row {
+    margin-bottom: 20px;
+}
+

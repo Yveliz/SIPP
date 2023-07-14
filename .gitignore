@@ -1,0 +1,15 @@
+# Ignorar archivos y carpetas de Django
+inventario/migrations/
+inventario/__pycache__/
+planificacion/__pycache__/
+planificacion/migrations/
+SIPP/__pycache__/
+static/
+templates/
+web-sipp/node_modules/
+
+# Ignorar archivos y carpetas generados por Angular
+web-sipp/dist/
+web-sipp/node_modules/
+
+node_modules

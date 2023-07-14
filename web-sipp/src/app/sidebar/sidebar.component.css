@@ -1,0 +1,137 @@
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+#sidebar-container {
+  min-height: 100vh;
+  background-color: #333;
+  padding: 0;
+  height: 100%;
+}
+
+.sidebar-collapsed {
+  width: 60px;
+  overflow: hidden;
+}
+
+/* Menu item */
+#sidebar-container .list-group a {
+  height: 50px;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Submenu item */
+#sidebar-container .list-group .sidebar-submenu a {
+  height: auto;
+  padding-left: 30px;
+}
+
+.sidebar-submenu {
+  font-size: 0.9rem;
+}
+
+/* Separators */
+.sidebar-separator-title {
+  background-color: #333;
+  height: 35px;
+}
+
+.sidebar-separator {
+  background-color: #333;
+  height: 25px;
+}
+
+.logo-separator {
+  background-color: #333;
+  height: 60px;
+}
+
+span.menu-collapsed {
+  display: inline-block;
+  max-height: 2.5em; /* Altura máxima inicial */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+.sidebar-expanded span.menu-collapsed {
+  max-height: none; /* Remover la altura máxima en modo expandido */
+}
+
+.sidebar-expanded #sidebar-container .list-group a {
+  height: auto;
+}
+
+.sidebar-submenu {
+  font-size: 0.9rem;
+}
+
+.select-max-width {
+  max-width: 100px;
+}
+
+#sidebar-container.sidebar-expanded {
+  width: 230px;
+}
+
+#sidebar-container.sidebar-collapsed {
+  width: 60px;
+  overflow: hidden;
+}
+
+#sidebar-container.sidebar-collapsed ul {
+  padding-left: 0;
+}
+
+#sidebar-container.sidebar-collapsed li {
+  display: none;
+}
+
+#sidebar-container.sidebar-collapsed a[data-toggle="sidebar-collapse"] {
+  justify-content: center;
+}
+
+#sidebar-container.sidebar-collapsed #collapse-icon {
+  margin-right: 0;
+  position: fixed;
+}
+
+#sidebar-container.sidebar-collapsed #collapse-text {
+  display: none;
+  position: fixed;
+}
+
+.sidebar-collapsed .menu-collapsed {
+  display: none;
+  position: fixed;
+}
+
+.sidebar-expanded {
+  width: 230px;
+  position: fixed;
+}
+
+.bg-primary {
+  background-color: #5086c1!important;
+}
+#sidebar-container {
+  min-height: 100vh;
+  background-color: #333;
+  padding: 0;
+  position: static;
+  float: left; /* Agregar este estilo para que el sidebar flote a la izquierda */
+}
+
+.sidebar-expanded {
+  width: 230px;
+  /* Eliminar la posición fija */
+}
+
+.sidebar-lateral {
+  margin-left: 230px; /* Ajustar el margen izquierdo para que el contenido no se superponga */
+}
+

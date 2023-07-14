@@ -1,0 +1,68 @@
+<div class="col p-4">
+    <h1 class="display-4">Administración de resultados</h1>
+    <div class="card">
+      <h5 class="card-header font-weight-light">Usuario: {{ nombreUsuario }}</h5>
+      <div class="card-body">
+        <div class="row mb-3">
+          <div class="col-md-2 form-row">
+            <label for="year1">Año de vigencia:</label>
+          </div>
+          <div class="col-md-10 form-row">
+            <select id="year1" [(ngModel)]="selectedYear1" (change)="actualizarResultados()">
+              <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-2 form-row">
+            <label for="year2">Finalización de vigencia:</label>
+          </div>
+          <div class="col-md-10 form-row">
+            <select id="year2" [(ngModel)]="selectedYear2" (change)="actualizarResultados()">
+              <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      
+      <ejs-grid #grid [dataSource]="resultados" [toolbar]="toolbar" [editSettings]="editSettings" (actionComplete)="onActionComplete($event, 1)" (actionBegin)="onActionBegin($event, 1)">
+        <e-columns>
+          <!-- Columnas del nivel 1 -->
+          <e-column id="spoares_id" field="spoares_id" headerText="ID" width="30" textAlign="Left" readonly [edit]="id"></e-column>
+    <e-column id="spoares_descripcion" field="spoares_descripcion" headerText="Descripción" width="120" textAlign="Left" [validationRules]="validDescripcion"></e-column>
+    <e-column field="spoares_vigencia_inicio" headerText="Año de vigencia" width="30" textAlign="Left" editType="numericedit" [edit]="vigencia" format="###.##" [validationRules]="validVigencia"></e-column>
+    <e-column field="spoares_finalizacion" headerText="Finalización de vigencia" width="30" textAlign="Left" editType="numericedit" [edit]="finalizacion" format="###.##" [validationRules]="validFinalizacion"></e-column>
+        </e-columns>
+        <ng-template #detailTemplate let-data>
+          <ejs-grid #childGrid [dataSource]="data.resultados_int" [toolbar]="toolbar" [editSettings]="editSettings" (actionComplete)="onActionComplete($event, 2)" (actionBegin)="onActionBegin($event, 2)">
+            <e-columns>
+              <!-- Columnas del nivel 2 -->
+              <e-column id="spoares_id" field="spoares_id" headerText="ID" width="30" textAlign="Left"  readonly [edit] = 'id'></e-column>
+              <e-column id="spoares_dependede" field="spoares_dependede" headerText="Id resultado final" width="30" textAlign="Left"  readonly [edit] = 'iddependiente' [visible]='false' ></e-column>
+              <e-column id="spoares_descripcion" field="spoares_descripcion" headerText="Descripción" width="120" textAlign="Left" [validationRules]="validDescripcion"></e-column>
+              <e-column field="spoares_vigencia_inicio" headerText="Año de vigencia" width="30" textAlign="Left" editType="numericedit" [edit]="vigencia" format="###.##" [validationRules]="validVigencia"></e-column>
+              <e-column field="spoares_finalizacion" headerText="Finalización de vigencia" width="30" textAlign="Left" editType="numericedit" [edit]="finalizacion" format="###.##" [validationRules]="validFinalizacion"></e-column>
+            </e-columns>
+            <ng-template #detailTemplate let-data>
+              <ejs-grid #childChildGrid [dataSource]="data.resultados_int" [toolbar]="toolbar" [editSettings]="editSettings" (actionComplete)="onActionComplete($event, 3)" (actionBegin)="onActionBegin($event, 3)">
+                <e-columns>
+                  <!-- Columnas del nivel 3 -->
+                  <e-column id="spoares_id" field="spoares_id" headerText="ID" width="30" textAlign="Left"  readonly [edit] = 'id'></e-column>
+                  <e-column id="spoares_dependede" field="spoares_dependede" headerText="Id resultado final" width="30" textAlign="Left"  readonly [edit] = 'iddependiente' [visible]='false'></e-column>
+                  <e-column id="spoares_descripcion" field="spoares_descripcion" headerText="Descripción" width="120" textAlign="Left" [validationRules]="validDescripcion"></e-column>
+                  <e-column field="spoares_vigencia_inicio" headerText="Año de vigencia" width="30" textAlign="Left" editType="numericedit" [edit]="vigencia" format="###.##" [validationRules]="validVigencia"></e-column>
+                  <e-column field="spoares_finalizacion" headerText="Finalización de vigencia" width="30" textAlign="Left" editType="numericedit" [edit]="finalizacion" format="###.##" [validationRules]="validFinalizacion"></e-column>
+                </e-columns>
+              </ejs-grid>
+            </ng-template>
+          </ejs-grid>
+        </ng-template>
+      </ejs-grid>
+
+      
+
+
+      
+    </div>
+  </div>

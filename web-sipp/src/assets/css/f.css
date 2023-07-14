@@ -1,0 +1,16 @@
+/* Estilos para el encabezado */
+header {
+    background-color: blue;
+    color: white;
+}
+
+/* Estilos para el botón de menú */
+.menu-button {
+    /* Para ocultar el texto del botón */
+    text-indent: -9999px;
+    /* Para mostrar las 3 líneas horizontales */
+    width: 30px;
+    height: 5px;
+    background-color: white;
+    margin-top: 10px;
+}
