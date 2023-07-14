@@ -56,20 +56,20 @@
       <!-- Agrega aquí más columnas según necesites -->
     </e-columns>
     <ng-template #detailTemplate let-data>
-      <ejs-grid #childGrid [dataSource]="data.subproductos" (rowSelected)="rowSelectedSubproducto($event)"[pageSettings]="pageSettings" class="table-2">
+      <ejs-grid #childGrid [dataSource]="data.subproductos" (rowSelected)="rowSelected($event)"[pageSettings]="pageSettings" class="table-2">
         <e-columns>
           <e-column field="spospro_id" headerText="Codigo subproducto" width="30" textAlign="Left"></e-column>
           <e-column field="spospr_descripcion" headerText="Descripción subproducto" width="120" textAlign="Left"></e-column>
         </e-columns>
         <ng-template #detailTemplate let-data>
-          <ejs-grid #childChildGrid [dataSource]="data.metas" [toolbar]="toolbar" [editSettings]="editSettings" (actionComplete)="onActionComplete($event, 3)" (actionBegin)="onActionBegin($event, 3)" class="table-3">
+          <ejs-grid #childChildGrid [dataSource]="data.metas" [toolbar]="toolbar" [editSettings]="editSettings" (actionComplete)="onActionComplete($event, 3)" (actionBegin)="onActionBegin($event, 3)" class="table-3" (rowSelected)="rowSelected($event)">
             <e-columns>
               <e-column field="spomta_id" headerText="Codigo meta" width="30" textAlign="Left" [edit] ='id'></e-column>
               <e-column field="spospro_id" headerText="Codigo subproducto" width="30" textAlign="Left" [edit]='iddependiente' [validationRules]="validIdDependiente" readonly></e-column>
               <e-column field="spomta_descripcion" headerText="Descripción meta" width="120" textAlign="Left" [edit]="descripcion" [validationRules]="validDescripcion"></e-column>
             </e-columns>
             <ng-template #detailTemplate let-data>
-              <ejs-grid #childChildChildGrid [dataSource]="data.acciones" [toolbar]="toolbar" [editSettings]="editSettings" (actionComplete)="onActionComplete($event, 4)" (actionBegin)="onActionBegin($event, 4)" class="table-4">
+              <ejs-grid #childChildChildGrid [dataSource]="data.acciones" [toolbar]="toolbar" [editSettings]="editSettings" (actionComplete)="onActionComplete($event, 4)" (actionBegin)="onActionBegin($event, 4)" class="table-4"  (rowSelected)="rowSelected($event)">
                 <e-columns>
                   <e-column field="spoacn_id" headerText="Codigo accion" width="30" textAlign="Left" [edit]="id"></e-column>
                   <e-column field="spomta_id" headerText="Codigo meta" width="30" textAlign="Left" [edit]="iddependiente" [validationRules]="validIdDependiente" readonly></e-column>

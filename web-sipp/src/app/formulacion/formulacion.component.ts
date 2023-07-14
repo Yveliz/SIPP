@@ -51,10 +51,9 @@ export class FormulacionComponent implements OnInit {
   public descripcion?: IEditCell;
 
   public showDialog = false;
-  public selectedRow: Producto | undefined;
 
   
-  selectedSubproducto: any;
+  selectedRow: any;
   nombreUsuario: string;
   periodos: any[];
   anios: any[];
@@ -176,25 +175,31 @@ export class FormulacionComponent implements OnInit {
 
   onActionBegin(args: any, level: number) {
     console.log(args)
-    
+    console.log(level)
     if (args.requestType === 'beginEdit' || args.requestType === 'add') {
       if (level === 3) {
-        console.log(this.selectedSubproducto.spospro_id); // para verificar si tienes el id correcto
-        const idSubproducto = this.selectedSubproducto.spospro_id;
+        console.log(this.selectedRow.spospro_id); // para verificar si tienes el id correcto
+        const idselected = this.selectedRow.spospro_id;
         if (args.requestType === 'beginEdit' || args.requestType === 'add') {
-          args.rowData['spospro_id'] = idSubproducto;
-          console.log(idSubproducto);
+          args.rowData['spospro_id'] = idselected;
+          console.log(idselected);
         }
       }
-
-      let meta = args.data;
-      let idSubproducto = this.selectedSubproducto.spospro_id; // id del subproducto seleccionado
+      if (level === 4) {
+        console.log(this.selectedRow.spomta_id); // para verificar si tienes el id correcto
+        const idselected = this.selectedRow.spomta_id;
+        if (args.requestType === 'beginEdit' || args.requestType === 'add') {
+          args.rowData['spomta_id'] = idselected;
+          console.log(idselected);
+        }
+      }
 
     }
   }
 
 
-  rowSelectedSubproducto(args: any): void {
-    this.selectedSubproducto = args.data;
+  rowSelected(args: any): void {
+    this.selectedRow = args.data;
   }
+
 }
