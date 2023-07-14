@@ -1,0 +1,93 @@
+<div class="col p-4">
+  <h1 class="display-4">Formulación plan operativo anual</h1>
+  <div class="card">
+    <h5 class="card-header font-weight-light">Usuario: {{ nombreUsuario }}</h5>
+    <div class="card-body" [formGroup]="formulario">
+      <div class="row mb-3">
+        <div class="col-md-2 form-row">
+          <label for="periodo">Periodo POM:</label>
+        </div>
+        <div class="col-md-10 form-row">
+          <select formControlName="periodo" id="periodo" name="periodo" class="form-control">
+            <option *ngFor="let periodo of periodos" [value]="formatoPeriodo(periodo.spoap_inicio, periodo.spoap_final)">
+              {{ formatoPeriodo(periodo.spoap_inicio, periodo.spoap_final) }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2 form-row">
+          <label for="anio">Año del ejercicio:</label>
+        </div>
+        <div class="col-md-10 form-row">
+          <select formControlName="anio" id="anio" name="anio" class="form-control">
+            <option *ngFor="let anio of anios" [value]="anio">{{ anio }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-2 form-row">
+          <label for="direccion">Dirección:</label>
+        </div>
+        <div class="form-group col-lg-10 form-row">
+          <select formControlName="direccion" id="direccion" name="direccion" class="form-control select-max-width">
+            <option *ngFor="let direccion of direcciones" [value]="direccion.adscgdp_id">{{ direccion.spodir_descripcion }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-2 form-row">
+          <label for="etapa">Etapa de formulación:</label>
+        </div>
+        <div class="form-group col-lg-10 form-row">
+          <select formControlName="etapa" id="etapa" name="etapa" class="form-control">
+            <option value="0">Formulación</option>
+            <option value="1">Anteproyecto</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ejs-grid #grid [dataSource]="productos" height="273px" class="table-1">
+    <e-columns>
+      <e-column field="spopro_id" headerText="Codigo producto" width="120" textAlign="Left"></e-column>
+      <e-column field="spopro_descripcion" headerText="Producto Descripción" width="180"></e-column>
+      <!-- Agrega aquí más columnas según necesites -->
+    </e-columns>
+    <ng-template #detailTemplate let-data>
+      <ejs-grid #childGrid [dataSource]="data.subproductos" (rowSelected)="rowSelectedSubproducto($event)"[pageSettings]="pageSettings" class="table-2">
+        <e-columns>
+          <e-column field="spospro_id" headerText="Codigo subproducto" width="30" textAlign="Left"></e-column>
+          <e-column field="spospr_descripcion" headerText="Descripción subproducto" width="120" textAlign="Left"></e-column>
+        </e-columns>
+        <ng-template #detailTemplate let-data>
+          <ejs-grid #childChildGrid [dataSource]="data.metas" [toolbar]="toolbar" [editSettings]="editSettings" (actionComplete)="onActionComplete($event, 3)" (actionBegin)="onActionBegin($event, 3)" class="table-3">
+            <e-columns>
+              <e-column field="spomta_id" headerText="Codigo meta" width="30" textAlign="Left" [edit] ='id'></e-column>
+              <e-column field="spospro_id" headerText="Codigo subproducto" width="30" textAlign="Left" [edit]='iddependiente' [validationRules]="validIdDependiente" readonly></e-column>
+              <e-column field="spomta_descripcion" headerText="Descripción meta" width="120" textAlign="Left" [edit]="descripcion" [validationRules]="validDescripcion"></e-column>
+            </e-columns>
+            <ng-template #detailTemplate let-data>
+              <ejs-grid #childChildChildGrid [dataSource]="data.acciones" [toolbar]="toolbar" [editSettings]="editSettings" (actionComplete)="onActionComplete($event, 4)" (actionBegin)="onActionBegin($event, 4)" class="table-4">
+                <e-columns>
+                  <e-column field="spoacn_id" headerText="Codigo accion" width="30" textAlign="Left" [edit]="id"></e-column>
+                  <e-column field="spomta_id" headerText="Codigo meta" width="30" textAlign="Left" [edit]="iddependiente" [validationRules]="validIdDependiente" readonly></e-column>
+                  <e-column field="spoudm_descripcion" headerText="Unidad de medida" width="60" textAlign="Left" [edit]="descripcion" [validationRules]="validDescripcion">
+                    <ng-template #template let-data>
+                      <ng-container *ngIf="getUnidadMedida(data.spoudm_id)">
+                        {{ getUnidadMedida(data.spoudm_id).spoudm_descripcion }}
+                      </ng-container>
+                    </ng-template>
+                  </e-column>
+                  <e-column field="spoacn_descripcion" headerText="Descripción" width="120" textAlign="Left"></e-column>
+                </e-columns>
+              </ejs-grid>
+            </ng-template>
+          </ejs-grid>
+        </ng-template>
+      </ejs-grid>
+    </ng-template>
+  </ejs-grid>
+
+</div>

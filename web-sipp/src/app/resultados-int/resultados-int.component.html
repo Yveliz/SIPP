@@ -1,0 +1,58 @@
+
+
+
+
+<div class="col p-4">
+  <h1 class="display-4">Administración resultados intermedios</h1>
+  <div class="card">
+    <h5 class="card-header font-weight-light">Usuario: {{ nombreUsuario }}</h5>
+    <div class="card-body">
+
+
+      <div class="row mb-3">
+        <div class="col-md-2 form-row">
+          <label for="year1">Año de vigencia:</label>
+        </div>
+        <div class="col-md-10 form-row">
+          
+          <select id="year1" [(ngModel)]="selectedYear1" (change)="actualizarResultados()">
+          <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-2 form-row">
+          <label for="year2">Finalización de vigencia:</label>
+        </div>
+        <div class="col-md-10 form-row">
+          
+          <select id="year2" [(ngModel)]="selectedYear2" (change)="actualizarResultados()">
+            <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+
+    <ejs-grid [dataSource]='resultados' [pageSettings]='pageSettings'>
+      <e-columns>
+        <e-column field='spoares_id' headerText='ID' width='30' textAlign='Left'></e-column>
+          <e-column field='spoares_descripcion' headerText='Descripción' width='120' textAlign='Left'></e-column>
+
+      </e-columns>
+      <ng-template #detailTemplate let-data>
+        <ejs-grid [dataSource]='data.resultados_int' [pageSettings]='pageSettings'>
+          <e-columns>
+            <e-column field='spoares_id' headerText='ID' width='30' textAlign='Left'></e-column>
+            <e-column field='spoares_descripcion' headerText='Descripción' width='120' textAlign="Left"></e-column>
+
+          </e-columns>
+        </ejs-grid>
+      </ng-template>
+    </ejs-grid>
+    
+
+    
+  </div>
+</div>

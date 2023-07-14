@@ -1,0 +1,29 @@
+.container {
+  display:flex;
+  height: 100%;
+  max-width: 100%;
+  margin: 0px;
+  padding-left: 0px;
+  width: 100%;
+  margin-left: 0%;
+}
+
+.sidebar-lateral {
+  width: 250px;
+  /* Agrega otros estilos necesarios para el sidebar lateral */
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.sidebar-superior {
+  /* Agrega estilos necesarios para el sidebar superior */
+}
+
+.main-content {
+  flex-grow: 1;
+  /* Agrega otros estilos necesarios para el contenido principal */
+}

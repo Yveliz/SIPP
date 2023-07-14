@@ -1,0 +1,91 @@
+<div id="sidebar-container" [ngClass]="{
+  'sidebar-expanded': !collapsed,
+  'sidebar-collapsed': collapsed,
+  'd-none': true,
+  'd-md-block': true
+}">
+  <ul class="list-group">
+    <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed" *ngIf="!collapsed">
+      <small>MENU</small>
+    </li>
+    <a href="formulacion" class="bg-dark list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-start align-items-center">
+        <span class="fa fa-check fa-fw mr-3"></span>
+        <span class="menu-collapsed">Formulación POA</span>
+      </div>
+    </a>
+    <a href="#" class="bg-dark list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-start align-items-center">
+        <span class="fa fa-calendar fa-fw mr-3"></span>
+        <span class="menu-collapsed">Programación POA</span>
+      </div>
+    </a>
+    <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed" *ngIf="!collapsed">
+      <small>Planificación</small>
+    </li>
+    <a href='resultadosinm' class="bg-dark list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-start align-items-center">
+        <span class="fa fa-list fa-fw mr-3"></span>
+        <span class="menu-collapsed">Resultados</span>
+        
+      </div>
+    </a>
+    
+    <a data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start" (click)="toggleSubMenu('submenu2')">
+      <div class="d-flex w-100 justify-content-start align-items-center">
+        <span class="fa fa-file fa-fw mr-3"></span>
+        <span class="menu-collapsed">Administración</span>
+        <span *ngIf="!collapsed" class="ml-auto">
+          <fa-icon *ngIf="isSubMenuOpen('submenu2')" [icon]="faAngleDown"></fa-icon>
+          <fa-icon *ngIf="!isSubMenuOpen('submenu2')" [icon]="faAngleRight"></fa-icon>
+        </span>
+      </div>
+    </a>
+    <div id="submenu2" [ngClass]="{'collapse': !isSubMenuOpen('submenu2'), 'sidebar-submenu': true}">
+      <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+        <span class="menu-collapsed">Gestion de productos</span>
+      </a>
+      <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+        <span class="menu-collapsed">Asignación de sub-productos</span>
+      </a>
+      <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+        <span class="menu-collapsed">Unidades de medida</span>
+      </a>
+      <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+        <span class="menu-collapsed">Fuentes de financiamiento</span>
+      </a>
+      <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+        <span class="menu-collapsed">Aprobación Programación Anual</span>
+      </a>
+    </div>
+    <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed" *ngIf="!collapsed">
+      <small>Usuario</small>
+    </li>
+    <a href="#" class="bg-dark list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-start align-items-center">
+        <span class="fa fa-lock fa-fw mr-3"></span>
+        <span class="menu-collapsed">Cambiar contraseña</span>
+      </div>
+    </a>
+    <a href="#" class="bg-dark list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-start align-items-center">
+        <span class="fa fa-arrow-right fa-fw mr-3"></span>
+        <span class="menu-collapsed">Ir a ejecución y seguimiento</span>
+      </div>
+    </a>
+    <a href="#" class="bg-dark list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-start align-items-center">
+        <fa-icon [icon]="faRightBracket" [fixedWidth]="true" class="mr-3"></fa-icon>
+        <span class="menu-collapsed">Salir</span>
+      </div>
+    </a>
+    <li class="list-group-item sidebar-separator menu-collapsed"></li>
+    <a data-toggle="sidebar-collapse" class="bg-dark list-group-item list-group-item-action d-flex align-items-center" (click)="sidebarCollapse()">
+      <div class="d-flex w-100 justify-content-start align-items-center">
+        <span *ngIf="collapsed" class="fa fa-2x mr-3 fa-angle-double-right"></span>
+        <span *ngIf="!collapsed" class="fa fa-2x mr-3 fa-angle-double-left"></span>
+        <span id="collapse-text" class="menu-collapsed"></span>
+      </div>
+    </a>
+  </ul>
+</div>
